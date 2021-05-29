@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet var sliderLabel: UILabel!
     @IBOutlet var textFieldLabel: UILabel!
     @IBOutlet var textField: UITextField!
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var labelDate: UILabel!
     
     
     
@@ -40,11 +42,11 @@ class ViewController: UIViewController {
         
         
         sliderLabel.text = String(slider.value)
-        sliderLabel.font = label.font.withSize(35)
+        sliderLabel.font = label.font.withSize(30)
         sliderLabel.textAlignment = .center
         
         textFieldLabel.text = " "
-        textFieldLabel.font = label.font.withSize(35)
+        textFieldLabel.font = label.font.withSize(30)
         textFieldLabel.textAlignment = .center
         
     }
@@ -96,9 +98,19 @@ class ViewController: UIViewController {
             
         } else {
             textFieldLabel.text = textField.text
-            textField.text = nil 
+            textField.text = nil
         }
         
+    }
+    
+    @IBAction func changeDate(_ sender: UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = . full
+        
+        let dateValue = dateFormatter.string(from: sender.date)
+        
+        labelDate.text = dateValue
     }
 }
 
